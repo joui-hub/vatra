@@ -1,17 +1,17 @@
 ---
-const currentPath = Astro.url.pathname;
+const currentPath = Astro.url.pathname.replace(/\/$/, '');
 
 const navLinks = [
-  { href: '/', label: 'Acasă' },
-  { href: '/meniu', label: 'Meniu' },
-  { href: '/rezervari', label: 'Rezervări' },
-  { href: '/despre', label: 'Despre' },
+  { href: '/vatra', label: 'Acasă' },
+  { href: '/vatra/meniu', label: 'Meniu' },
+  { href: '/vatra/rezervari', label: 'Rezervări' },
+  { href: '/vatra/despre', label: 'Despre' },
 ];
 ---
 
 <header class="navbar" role="banner">
   <div class="navbar__container">
-    <a href="/" class="navbar__logo" aria-label="Vatra - Acasă">
+    <a href="/vatra" class="navbar__logo" aria-label="Vatra - Acasă">
       <span class="navbar__logo-text">Vatra</span>
     </a>
 
@@ -30,7 +30,7 @@ const navLinks = [
       </ul>
     </nav>
 
-    <a href="/rezervari" class="navbar__cta btn btn--primary">Rezervă</a>
+    <a href="/vatra/rezervari" class="navbar__cta btn btn--primary">Rezervă</a>
 
     <button
       class="navbar__toggle"
@@ -57,7 +57,7 @@ const navLinks = [
         </li>
       ))}
     </ul>
-    <a href="/rezervari" class="btn btn--primary navbar__mobile-cta">Rezervă o masă</a>
+    <a href="/vatra/rezervari" class="btn btn--primary navbar__mobile-cta">Rezervă o masă</a>
   </nav>
 </header>
 
