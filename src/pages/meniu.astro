@@ -1,0 +1,155 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import MenuCard from '../components/MenuCard.astro';
+import menuData from '../data/menu.json';
+
+const categories = [
+  { id: 'toate', label: 'Toate' },
+  { id: 'aperitive', label: 'Aperitive' },
+  { id: 'supe', label: 'Supe' },
+  { id: 'fel-principal', label: 'Fel principal' },
+  { id: 'deserturi', label: 'Deserturi' },
+  { id: 'bauturi', label: 'Băuturi' },
+];
+---
+
+<BaseLayout title="Meniu — Vatra Restaurant">
+  <section class="menu-hero" aria-label="Meniul restaurantului">
+    <div class="menu-hero__content container">
+      <span class="section__label">Descoperă</span>
+      <h1 class="menu-hero__title">Meniul nostru</h1>
+      <p class="menu-hero__subtitle">
+        Preparate tradiționale românești reinterpretate cu grijă și pasiune
+      </p>
+    </div>
+  </section>
+
+  <section class="menu-page section" aria-label="Lista de preparate">
+    <div class="container">
+      <div class="menu-page__filters" role="tablist" aria-label="Filtrare pe categorii">
+        {categories.map((cat, i) => (
+          <button
+            class={`menu-page__filter ${i === 0 ? 'menu-page__filter--active' : ''}`}
+            data-category={cat.id}
+            role="tab"
+            aria-selected={i === 0}
+          >
+            {cat.label}
+          </button>
+        ))}
+      </div>
+
+      <div class="menu-page__grid">
+        {menuData.map((item) => (
+          <div class="menu-page__item" data-category={item.category}>
+            <MenuCard
+              name={item.name}
+              description={item.description}
+              price={item.price}
+              gradient={item.gradient}
+              badge={item.badge || undefined}
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .menu-hero {
+    padding-top: 140px;
+    padding-bottom: var(--space-12);
+    text-align: center;
+    background: linear-gradient(180deg, var(--color-surface), var(--color-bg));
+  }
+
+  .menu-hero__title {
+    font-size: var(--text-4xl);
+    margin-bottom: var(--space-4);
+  }
+
+  .menu-hero__subtitle {
+    color: var(--color-muted);
+    font-size: var(--text-lg);
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .menu-page__filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    justify-content: center;
+    margin-bottom: var(--space-12);
+  }
+
+  .menu-page__filter {
+    padding: var(--space-2) var(--space-6);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    background: transparent;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all var(--transition);
+  }
+
+  .menu-page__filter:hover {
+    color: var(--color-text);
+    border-color: var(--color-accent);
+  }
+
+  .menu-page__filter--active {
+    color: var(--color-bg);
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+  }
+
+  .menu-page__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  .menu-page__item[data-hidden="true"] {
+    display: none;
+  }
+
+  @media (min-width: 640px) {
+    .menu-page__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const filters = document.querySelectorAll('.menu-page__filter');
+    const items = document.querySelectorAll('.menu-page__item');
+
+    filters.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const category = btn.dataset.category;
+
+        filters.forEach((f) => {
+          f.classList.remove('menu-page__filter--active');
+          f.setAttribute('aria-selected', 'false');
+        });
+        btn.classList.add('menu-page__filter--active');
+        btn.setAttribute('aria-selected', 'true');
+
+        items.forEach((item) => {
+          if (category === 'toate' || item.dataset.category === category) {
+            item.removeAttribute('data-hidden');
+          } else {
+            item.setAttribute('data-hidden', 'true');
+          }
+        });
+      });
+    });
+  });
+</script>

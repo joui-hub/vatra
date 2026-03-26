@@ -1,0 +1,125 @@
+---
+const images = [
+  { gradient: 'gradient-1', label: 'Interior restaurant' },
+  { gradient: 'gradient-2', label: 'Zona de luat masa' },
+  { gradient: 'gradient-3', label: 'Bucătărie deschisă' },
+  { gradient: 'gradient-4', label: 'Terasă' },
+  { gradient: 'gradient-5', label: 'Bar' },
+  { gradient: 'gradient-6', label: 'Detalii decor' },
+];
+---
+
+<section class="gallery section" aria-label="Galerie foto">
+  <div class="container text-center">
+    <span class="section__label fade-in">Atmosfera</span>
+    <h2 class="section__title fade-in">O atmosferă care încântă</h2>
+    <p class="section__subtitle fade-in">
+      Descoperă ambientul cald și rafinat care transformă fiecare vizită într-o experiență
+    </p>
+  </div>
+  <div class="gallery__grid container fade-in">
+    {images.map((img, i) => (
+      <div
+        class={`gallery__item gallery__item--${i + 1} ${img.gradient}`}
+        role="img"
+        aria-label={img.label}
+      >
+        <div class="gallery__overlay">
+          <span class="gallery__caption">{img.label}</span>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .gallery__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+    margin-top: var(--space-12);
+  }
+
+  .gallery__item {
+    position: relative;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .gallery__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(26, 20, 16, 0.7);
+    display: flex;
+    align-items: flex-end;
+    padding: var(--space-6);
+    opacity: 0;
+    transition: opacity var(--transition);
+  }
+
+  .gallery__item:hover .gallery__overlay {
+    opacity: 1;
+  }
+
+  .gallery__caption {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    color: var(--color-text);
+    transform: translateY(10px);
+    transition: transform var(--transition);
+  }
+
+  .gallery__item:hover .gallery__caption {
+    transform: translateY(0);
+  }
+
+  @media (min-width: 640px) {
+    .gallery__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .gallery__grid {
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(2, 250px);
+    }
+
+    .gallery__item--1 {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+
+    .gallery__item--2,
+    .gallery__item--3 {
+      grid-column: span 1;
+      grid-row: span 1;
+    }
+
+    .gallery__item--4 {
+      grid-column: span 1;
+      grid-row: span 1;
+    }
+
+    .gallery__item--5 {
+      grid-column: span 2;
+      grid-row: span 1;
+    }
+
+    .gallery__item--6 {
+      display: none;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .gallery__item--6 {
+      display: block;
+      grid-column: span 1;
+    }
+
+    .gallery__item--5 {
+      grid-column: span 1;
+    }
+  }
+</style>

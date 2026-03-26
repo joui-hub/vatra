@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Maria Popescu",
+    "role": "Client fidel",
+    "text": "Vatra este locul unde tradiția întâlnește rafinamentul. Sarmalele sunt cele mai bune din oraș, iar atmosfera te face să te simți acasă. Vin aici de fiecare dată când vreau să mă răsfăț cu mâncare adevărată românească."
+  },
+  {
+    "name": "Andrei Ionescu",
+    "role": "Critic culinar",
+    "text": "O surpriză plăcută în peisajul culinar românesc. Chef-ul reușește să păstreze autenticitatea rețetelor adăugând un twist modern subtil. Papanașii sunt absolut divini — trebuie încercați!"
+  },
+  {
+    "name": "Elena Dumitrescu",
+    "role": "Turist din București",
+    "text": "Am descoperit Vatra întâmplător și a devenit restaurantul meu preferat. Servirea impecabilă, porțiile generoase și calitatea ingredientelor fac diferența. Recomand cu căldură!"
+  }
+]

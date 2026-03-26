@@ -1,0 +1,142 @@
+[
+  {
+    "id": 1,
+    "name": "Salată de vinete",
+    "description": "Salată tradițională de vinete coapte cu ceapă și ulei de floarea-soarelui",
+    "price": 22,
+    "category": "aperitive",
+    "badge": "vegetarian",
+    "gradient": "gradient-1",
+    "featured": false
+  },
+  {
+    "id": 2,
+    "name": "Zacuscă",
+    "description": "Zacuscă de casă cu vinete, ardei copți și roșii, servită cu pâine de casă",
+    "price": 18,
+    "category": "aperitive",
+    "badge": "vegetarian",
+    "gradient": "gradient-2",
+    "featured": false
+  },
+  {
+    "id": 3,
+    "name": "Ciorbă de burtă",
+    "description": "Ciorbă cremoasă de burtă cu smântână, usturoi și ardei iute",
+    "price": 32,
+    "category": "supe",
+    "badge": "recomandat",
+    "gradient": "gradient-3",
+    "featured": true
+  },
+  {
+    "id": 4,
+    "name": "Ciorbă rădăuțeană",
+    "description": "Ciorbă de pui cu smântână, ou și usturoi, rețetă din Bucovina",
+    "price": 28,
+    "category": "supe",
+    "badge": "",
+    "gradient": "gradient-4",
+    "featured": false
+  },
+  {
+    "id": 5,
+    "name": "Sarmale cu mămăligă",
+    "description": "Sarmale de casă în foi de varză cu carne de porc, mamaliguta și smântână",
+    "price": 42,
+    "category": "fel-principal",
+    "badge": "recomandat",
+    "gradient": "gradient-5",
+    "featured": true
+  },
+  {
+    "id": 6,
+    "name": "Mici cu muștar",
+    "description": "Mici tradiționali din amestec de vită și porc, serviți cu muștar de casă",
+    "price": 38,
+    "category": "fel-principal",
+    "badge": "",
+    "gradient": "gradient-6",
+    "featured": false
+  },
+  {
+    "id": 7,
+    "name": "Papanași",
+    "description": "Papanași prăjiți cu smântână și dulceață de vișine",
+    "price": 28,
+    "category": "deserturi",
+    "badge": "recomandat",
+    "gradient": "gradient-1",
+    "featured": true
+  },
+  {
+    "id": 8,
+    "name": "Cozonac de casă",
+    "description": "Cozonac pufos cu nucă și cacao, rețetă tradițională de familie",
+    "price": 24,
+    "category": "deserturi",
+    "badge": "",
+    "gradient": "gradient-2",
+    "featured": false
+  },
+  {
+    "id": 9,
+    "name": "Piele de porc la grătar",
+    "description": "Piele crocantă de porc cu sos de usturoi și mămăliguță",
+    "price": 45,
+    "category": "fel-principal",
+    "badge": "",
+    "gradient": "gradient-3",
+    "featured": false
+  },
+  {
+    "id": 10,
+    "name": "Tocăniță de vită",
+    "description": "Tocăniță lent gătită cu cartofi, ceapă și condimente ardelenești",
+    "price": 48,
+    "category": "fel-principal",
+    "badge": "",
+    "gradient": "gradient-4",
+    "featured": false
+  },
+  {
+    "id": 11,
+    "name": "Țuică de prune",
+    "description": "Țuică tradițională de prune, dublu distilată, din Maramureș",
+    "price": 18,
+    "category": "bauturi",
+    "badge": "",
+    "gradient": "gradient-5",
+    "featured": false
+  },
+  {
+    "id": 12,
+    "name": "Fetească Neagră",
+    "description": "Vin roșu sec din soi autohton, note de prune și condimente",
+    "price": 32,
+    "category": "bauturi",
+    "badge": "recomandat",
+    "gradient": "gradient-6",
+    "featured": false
+  },
+  {
+    "id": 13,
+    "name": "Afinată",
+    "description": "Lichior de afine de pădure, preparat după rețetă muntenească",
+    "price": 16,
+    "category": "bauturi",
+    "badge": "",
+    "gradient": "gradient-1",
+    "featured": false
+  },
+  {
+    "id": 14,
+    "name": "Drob de miel",
+    "description": "Drob tradițional de miel cu verdețuri și ouă, servit cu salată verde",
+    "price": 36,
+    "category": "aperitive",
+    "badge": "",
+    "gradient": "gradient-2",
+    "featured": false
+  }
+]

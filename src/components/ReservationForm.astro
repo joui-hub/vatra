@@ -1,0 +1,156 @@
+---
+---
+
+<section class="reservation-form" aria-label="Formular de rezervare">
+  <h2 class="reservation-form__title">Rezervă o masă</h2>
+  <p class="reservation-form__desc">
+    Completează formularul și îți vom confirma rezervarea în cel mai scurt timp.
+  </p>
+  <form class="reservation-form__form" name="rezervare" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+    <input type="hidden" name="form-name" value="rezervare" />
+    <p class="reservation-form__hidden" aria-hidden="true">
+      <label>Nu completa acest câmp: <input name="bot-field" /></label>
+    </p>
+
+    <div class="reservation-form__row">
+      <div class="reservation-form__field">
+        <label class="reservation-form__label" for="nume">Nume complet</label>
+        <input type="text" id="nume" name="nume" required class="reservation-form__input" placeholder="Numele tău" />
+      </div>
+      <div class="reservation-form__field">
+        <label class="reservation-form__label" for="telefon">Telefon</label>
+        <input type="tel" id="telefon" name="telefon" required class="reservation-form__input" placeholder="+40 7xx xxx xxx" />
+      </div>
+    </div>
+
+    <div class="reservation-form__row">
+      <div class="reservation-form__field">
+        <label class="reservation-form__label" for="data">Data</label>
+        <input type="date" id="data" name="data" required class="reservation-form__input" />
+      </div>
+      <div class="reservation-form__field">
+        <label class="reservation-form__label" for="ora">Ora</label>
+        <select id="ora" name="ora" required class="reservation-form__input">
+          <option value="">Selectează ora</option>
+          <option value="12:00">12:00</option>
+          <option value="13:00">13:00</option>
+          <option value="14:00">14:00</option>
+          <option value="15:00">15:00</option>
+          <option value="18:00">18:00</option>
+          <option value="19:00">19:00</option>
+          <option value="20:00">20:00</option>
+          <option value="21:00">21:00</option>
+          <option value="22:00">22:00</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="reservation-form__row">
+      <div class="reservation-form__field">
+        <label class="reservation-form__label" for="persoane">Număr persoane</label>
+        <select id="persoane" name="persoane" required class="reservation-form__input">
+          <option value="">Selectează</option>
+          <option value="1">1 persoană</option>
+          <option value="2">2 persoane</option>
+          <option value="3">3 persoane</option>
+          <option value="4">4 persoane</option>
+          <option value="5">5 persoane</option>
+          <option value="6">6 persoane</option>
+          <option value="7">7+ persoane</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="reservation-form__field reservation-form__field--full">
+      <label class="reservation-form__label" for="mesaj">Mesaj (opțional)</label>
+      <textarea id="mesaj" name="mesaj" rows="4" class="reservation-form__input reservation-form__textarea" placeholder="Cereri speciale, alergii, ocazie specială..."></textarea>
+    </div>
+
+    <button type="submit" class="btn btn--primary reservation-form__submit">Trimite rezervarea</button>
+  </form>
+</section>
+
+<style>
+  .reservation-form {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-8);
+  }
+
+  .reservation-form__title {
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    margin-bottom: var(--space-3);
+  }
+
+  .reservation-form__desc {
+    color: var(--color-muted);
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-8);
+  }
+
+  .reservation-form__hidden {
+    position: absolute;
+    left: -9999px;
+  }
+
+  .reservation-form__row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    margin-bottom: var(--space-6);
+  }
+
+  .reservation-form__field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .reservation-form__field--full {
+    margin-bottom: var(--space-6);
+  }
+
+  .reservation-form__label {
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--color-text);
+  }
+
+  .reservation-form__input {
+    padding: var(--space-3) var(--space-4);
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    color: var(--color-text);
+    font-size: var(--text-sm);
+    transition: border-color var(--transition);
+    outline: none;
+  }
+
+  .reservation-form__input::placeholder {
+    color: var(--color-muted);
+  }
+
+  .reservation-form__input:focus {
+    border-color: var(--color-accent);
+  }
+
+  .reservation-form__textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+
+  .reservation-form__submit {
+    width: 100%;
+    padding: var(--space-4);
+    font-size: var(--text-base);
+  }
+
+  @media (min-width: 640px) {
+    .reservation-form__row {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>

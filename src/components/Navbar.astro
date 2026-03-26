@@ -1,0 +1,258 @@
+---
+const currentPath = Astro.url.pathname;
+
+const navLinks = [
+  { href: '/', label: 'Acasă' },
+  { href: '/meniu', label: 'Meniu' },
+  { href: '/rezervari', label: 'Rezervări' },
+  { href: '/despre', label: 'Despre' },
+];
+---
+
+<header class="navbar" role="banner">
+  <div class="navbar__container">
+    <a href="/" class="navbar__logo" aria-label="Vatra - Acasă">
+      <span class="navbar__logo-text">Vatra</span>
+    </a>
+
+    <nav class="navbar__nav" role="navigation" aria-label="Navigare principală">
+      <ul class="navbar__list">
+        {navLinks.map((link) => (
+          <li class="navbar__item">
+            <a
+              href={link.href}
+              class={`navbar__link ${currentPath === link.href ? 'navbar__link--active' : ''}`}
+            >
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <a href="/rezervari" class="navbar__cta btn btn--primary">Rezervă</a>
+
+    <button
+      class="navbar__toggle"
+      aria-label="Deschide meniul"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
+      <span class="navbar__toggle-bar"></span>
+      <span class="navbar__toggle-bar"></span>
+      <span class="navbar__toggle-bar"></span>
+    </button>
+  </div>
+
+  <nav class="navbar__mobile" id="mobile-menu" role="navigation" aria-label="Meniu mobil" hidden>
+    <ul class="navbar__mobile-list">
+      {navLinks.map((link) => (
+        <li class="navbar__mobile-item">
+          <a
+            href={link.href}
+            class={`navbar__mobile-link ${currentPath === link.href ? 'navbar__mobile-link--active' : ''}`}
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+    <a href="/rezervari" class="btn btn--primary navbar__mobile-cta">Rezervă o masă</a>
+  </nav>
+</header>
+
+<style>
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: rgba(26, 20, 16, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--color-border);
+    transition: background-color var(--transition);
+  }
+
+  .navbar__container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: var(--space-4) var(--container-pad);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .navbar__logo {
+    text-decoration: none;
+  }
+
+  .navbar__logo-text {
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    color: var(--color-gold);
+    letter-spacing: 0.05em;
+  }
+
+  .navbar__nav {
+    display: none;
+  }
+
+  .navbar__list {
+    display: flex;
+    gap: var(--space-8);
+  }
+
+  .navbar__link {
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    text-decoration: none;
+    transition: color var(--transition);
+    position: relative;
+  }
+
+  .navbar__link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--color-accent);
+    transition: width var(--transition);
+  }
+
+  .navbar__link:hover,
+  .navbar__link--active {
+    color: var(--color-text);
+  }
+
+  .navbar__link:hover::after,
+  .navbar__link--active::after {
+    width: 100%;
+  }
+
+  .navbar__cta {
+    display: none;
+  }
+
+  .navbar__toggle {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: var(--space-2);
+    cursor: pointer;
+    z-index: 1001;
+  }
+
+  .navbar__toggle-bar {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: var(--color-text);
+    transition: all var(--transition);
+  }
+
+  .navbar__toggle[aria-expanded="true"] .navbar__toggle-bar:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .navbar__toggle[aria-expanded="true"] .navbar__toggle-bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .navbar__toggle[aria-expanded="true"] .navbar__toggle-bar:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+
+  .navbar__mobile {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--color-bg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-8);
+    z-index: 999;
+  }
+
+  .navbar__mobile[hidden] {
+    display: none;
+  }
+
+  .navbar__mobile-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-6);
+  }
+
+  .navbar__mobile-link {
+    font-family: var(--font-display);
+    font-size: var(--text-3xl);
+    color: var(--color-text);
+    text-decoration: none;
+    transition: color var(--transition);
+  }
+
+  .navbar__mobile-link:hover,
+  .navbar__mobile-link--active {
+    color: var(--color-accent);
+  }
+
+  .navbar__mobile-cta {
+    margin-top: var(--space-4);
+  }
+
+  @media (min-width: 1024px) {
+    .navbar__nav {
+      display: block;
+    }
+
+    .navbar__cta {
+      display: inline-flex;
+    }
+
+    .navbar__toggle {
+      display: none;
+    }
+
+    .navbar__mobile {
+      display: none !important;
+    }
+  }
+</style>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const toggle = document.querySelector('.navbar__toggle');
+    const mobileMenu = document.querySelector('.navbar__mobile');
+    const mobileLinks = document.querySelectorAll('.navbar__mobile-link, .navbar__mobile-cta');
+
+    if (!toggle || !mobileMenu) return;
+
+    toggle.addEventListener('click', () => {
+      const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!isOpen));
+      mobileMenu.hidden = isOpen;
+      document.body.style.overflow = isOpen ? '' : 'hidden';
+    });
+
+    mobileLinks.forEach((link) => {
+      link.addEventListener('click', () => {
+        toggle.setAttribute('aria-expanded', 'false');
+        mobileMenu.hidden = true;
+        document.body.style.overflow = '';
+      });
+    });
+  });
+</script>

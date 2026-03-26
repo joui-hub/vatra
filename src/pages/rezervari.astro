@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ReservationForm from '../components/ReservationForm.astro';
+import ContactInfo from '../components/ContactInfo.astro';
+---
+
+<BaseLayout title="Rezervări — Vatra Restaurant" description="Rezervă o masă la Vatra. Formular de rezervare, informații de contact și program.">
+  <section class="rezervari-hero" aria-label="Rezervări">
+    <div class="rezervari-hero__content container">
+      <span class="section__label">Rezervări</span>
+      <h1 class="rezervari-hero__title">Pregătește-ți locul</h1>
+      <p class="rezervari-hero__subtitle">
+        Rezervă o masă și lasă-ne să îți oferim o experiență culinară de neuitat
+      </p>
+    </div>
+  </section>
+
+  <section class="rezervari-page section" aria-label="Formular și contact">
+    <div class="rezervari-page__grid container">
+      <div class="rezervari-page__form fade-in">
+        <ReservationForm />
+      </div>
+      <div class="rezervari-page__contact fade-in">
+        <ContactInfo />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .rezervari-hero {
+    padding-top: 140px;
+    padding-bottom: var(--space-12);
+    text-align: center;
+    background: linear-gradient(180deg, var(--color-surface), var(--color-bg));
+  }
+
+  .rezervari-hero__title {
+    font-size: var(--text-4xl);
+    margin-bottom: var(--space-4);
+  }
+
+  .rezervari-hero__subtitle {
+    color: var(--color-muted);
+    font-size: var(--text-lg);
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .rezervari-page__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-12);
+  }
+
+  @media (min-width: 1024px) {
+    .rezervari-page__grid {
+      grid-template-columns: 1.2fr 0.8fr;
+      align-items: start;
+    }
+  }
+</style>

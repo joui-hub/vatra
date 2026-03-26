@@ -1,0 +1,56 @@
+---
+import menuData from '../data/menu.json';
+import MenuCard from './MenuCard.astro';
+
+const featured = menuData.filter((item) => item.featured).slice(0, 3);
+---
+
+<section class="featured section" aria-label="Preparate recomandate">
+  <div class="container text-center">
+    <span class="section__label fade-in">Recomandările bucătarului</span>
+    <h2 class="section__title fade-in">Preparate emblematice</h2>
+    <p class="section__subtitle fade-in">
+      Cele mai iubite creații ale noastre, preparate cu ingrediente proaspete și rețete moștenite
+    </p>
+  </div>
+  <div class="featured__grid container">
+    {featured.map((dish) => (
+      <MenuCard
+        name={dish.name}
+        description={dish.description}
+        price={dish.price}
+        gradient={dish.gradient}
+        badge={dish.badge || undefined}
+      />
+    ))}
+  </div>
+  <div class="container text-center fade-in">
+    <a href="/meniu" class="btn btn--outline featured__cta">Vezi meniul complet</a>
+  </div>
+</section>
+
+<style>
+  .featured__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+    margin-top: var(--space-12);
+    margin-bottom: var(--space-12);
+  }
+
+  .featured__cta {
+    margin-top: var(--space-4);
+  }
+
+  @media (min-width: 640px) {
+    .featured__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .featured__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

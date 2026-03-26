@@ -1,0 +1,150 @@
+---
+---
+
+<section class="hero" aria-label="Secțiune principală">
+  <div class="hero__bg gradient-hero"></div>
+  <div class="hero__overlay"></div>
+  <div class="hero__content">
+    <span class="hero__label">Restaurant Românesc Modern</span>
+    <h1 class="hero__title">Vatra</h1>
+    <p class="hero__subtitle">
+      Bucătărie tradițională reinterpretată cu pasiune și ingrediente autentice
+    </p>
+    <a href="/rezervari" class="btn btn--primary hero__cta">Rezervă o masă</a>
+  </div>
+  <div class="hero__scroll" aria-hidden="true">
+    <span class="hero__scroll-text">Scroll</span>
+    <span class="hero__scroll-line"></span>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .hero__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(26, 20, 16, 0.6) 0%,
+      rgba(26, 20, 16, 0.3) 50%,
+      rgba(26, 20, 16, 0.8) 100%
+    );
+    z-index: 1;
+  }
+
+  .hero__content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: var(--space-4);
+    animation: heroFadeIn 1.2s ease forwards;
+  }
+
+  .hero__label {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: var(--space-6);
+    border: 1px solid var(--color-accent);
+    padding: var(--space-2) var(--space-6);
+    border-radius: var(--radius-sm);
+  }
+
+  .hero__title {
+    font-family: var(--font-display);
+    font-size: clamp(3.5rem, 12vw, var(--text-4xl));
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: var(--space-6);
+    letter-spacing: 0.02em;
+  }
+
+  .hero__subtitle {
+    font-family: var(--font-body);
+    font-size: var(--text-lg);
+    color: var(--color-muted);
+    max-width: 500px;
+    margin: 0 auto var(--space-8);
+    line-height: 1.7;
+  }
+
+  .hero__cta {
+    font-size: var(--text-sm);
+    padding: var(--space-4) var(--space-12);
+  }
+
+  .hero__scroll {
+    position: absolute;
+    bottom: var(--space-8);
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .hero__scroll-text {
+    font-size: var(--text-xs);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+
+  .hero__scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--color-accent), transparent);
+    animation: scrollPulse 2s ease infinite;
+  }
+
+  @keyframes heroFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% {
+      opacity: 0.4;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+
+  @media (max-width: 639px) {
+    .hero__label {
+      font-size: var(--text-xs);
+      padding: var(--space-1) var(--space-4);
+    }
+
+    .hero__scroll {
+      display: none;
+    }
+  }
+</style>

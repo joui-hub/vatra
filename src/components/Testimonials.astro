@@ -1,0 +1,40 @@
+---
+import testimonialsData from '../data/testimonials.json';
+import TestimonialCard from './TestimonialCard.astro';
+---
+
+<section class="testimonials section" aria-label="Recenzii clienți">
+  <div class="container text-center">
+    <span class="section__label fade-in">Ce spun clienții</span>
+    <h2 class="section__title fade-in">Experiențe autentice</h2>
+    <p class="section__subtitle fade-in">
+      Cuvintele celor care ne-au trecut pragul ne motivează să continuăm
+    </p>
+  </div>
+  <div class="testimonials__grid container">
+    {testimonialsData.map((t) => (
+      <TestimonialCard name={t.name} role={t.role} text={t.text} />
+    ))}
+  </div>
+</section>
+
+<style>
+  .testimonials__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+    margin-top: var(--space-12);
+  }
+
+  @media (min-width: 640px) {
+    .testimonials__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .testimonials__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

@@ -1,0 +1,63 @@
+---
+---
+
+<section class="story section" aria-label="Povestea noastră">
+  <div class="story__container container">
+    <div class="story__content fade-in">
+      <span class="section__label">Povestea noastră</span>
+      <h2 class="section__title">De la inimă la farfurie</h2>
+      <p class="story__text">
+        Vatra s-a născut din dorința de a redescoperi și celebra bucătăria românească
+        autentică. Fiecare preparat este o călătorie prin tradițiile culinare ale
+        satelor noastre, reinterpretate cu tehnici moderne și prezentare rafinată.
+      </p>
+      <p class="story__text">
+        Lucrăm cu producători locali, folosim ingrediente de sezon și pregătim totul
+        cu răbdare — așa cum făceau bunicii noștri. La Vatra, fiecare masă este o
+        experiență care te aduce acasă.
+      </p>
+      <a href="/despre" class="btn btn--outline story__cta">Află mai multe</a>
+    </div>
+    <div class="story__image fade-in gradient-3" role="img" aria-label="Interiorul restaurantului Vatra"></div>
+  </div>
+</section>
+
+<style>
+  .story__container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-12);
+    align-items: center;
+  }
+
+  .story__text {
+    color: var(--color-muted);
+    line-height: 1.8;
+    margin-bottom: var(--space-4);
+  }
+
+  .story__cta {
+    margin-top: var(--space-4);
+  }
+
+  .story__image {
+    height: 400px;
+    border-radius: var(--radius-lg);
+  }
+
+  @media (min-width: 1024px) {
+    .story__container {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-16);
+    }
+
+    .story__image {
+      height: 500px;
+      order: 1;
+    }
+
+    .story__content {
+      order: 0;
+    }
+  }
+</style>
